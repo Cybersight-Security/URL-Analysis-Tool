@@ -2,105 +2,103 @@
 
 # URL Analysis Tool
 
-This repository contains a Python-based tool for analyzing URLs and detecting potential threats using various cybersecurity services like VirusTotal and URLScan.io. The tool combines the scan results with WHOIS information and provides a user-friendly interface to tweet the analysis findings or custom messages.
+![Cybersight Security URL Threat Analyzer](assets/logo.png)
+
+The Cybersight Security URL Analysis Tool is a comprehensive tool that examines URLs for potential cybersecurity threats by leveraging multiple threat intelligence services including VirusTotal and URLScan.io. The tool combines scan results with WHOIS information and provides options to share findings via Twitter, offering security professionals and the public an easy way to assess website safety.
 
 </div>
 
-## Features
+## Features:
+- Scans URLs using VirusTotal and URLScan.io APIs
+- Retrieves comprehensive WHOIS information for domains
+- Combines threat intelligence from multiple sources
+- Provides Twitter integration for sharing results
+- Generates detailed, numbered reports for each analysis
+- Offers intuitive command-line interface
+- Supports configuration for multiple API services
 
-- Scan URLs using VirusTotal and URLScan.io APIs
-- Retrieve WHOIS information for the analyzed domains
-- Save the combined analysis results to numbered output files
-- Interact with the Twitter API to post tweets containing the analysis results or custom text
-- User-friendly command-line interface
+**Important Note:** While this tool provides valuable threat intelligence, the results should be used as part of a comprehensive security analysis. Cybersight Security makes no warranties about the completeness or accuracy of the data presented.
 
-<div align="center">
+## Data Sources
 
-## ☕ [Support my work on Ko-Fi](https://ko-fi.com/thatsinewave)
+The application integrates with the following cybersecurity services:
+- VirusTotal (Malware detection and URL analysis)
+- URLScan.io (Website scanning and threat detection)
+- WHOIS (Domain registration information)
+- Twitter API (For sharing results)
 
-</div>
+## Technical Implementation
 
-## Repository Structure
+### Core Components
 
-- `controller.py`: The main entry point of the application, handling user input, coordinating the execution of various modules, and providing the user interface.
-- `output_module.py`: Handles the formatting and saving of analysis results to output files in the `outputs` directory.
-- `twitter_module.py`: Allows users to interact with the Twitter API to post tweets containing analysis results or custom text.
-- `urlscan_module.py`: Interacts with the URLScan.io API to submit URLs for scanning and retrieve the scan results.
-- `virustotal_module.py`: Interacts with the VirusTotal API to scan URLs and retrieve the analysis results.
-- `whois_module.py`: Fetches WHOIS information for a given domain.
-- `configs/`: Directory containing configuration files with API keys for VirusTotal, URLScan.io, and Twitter.
-- `outputs/`: Directory where the analysis results are saved as numbered text files.
+- **URL Scanning Modules:**
+  - `virustotal_module.py`: Handles VirusTotal API interactions
+  - `urlscan_module.py`: Manages URLScan.io submissions and results
+  - `whois_module.py`: Retrieves domain registration details
 
-<div align="center">
+- **Output Management:**
+  - `output_module.py`: Formats and saves analysis reports
+  - Numbered output files for tracking historical scans
 
-# [Join my discord server](https://discord.gg/2nHHHBWNDw)
+- **Twitter Integration:**
+  - `twitter_module.py`: Enables result sharing via Twitter API
 
-</div>
+- **Main Controller:**
+  - `controller.py`: Orchestrates the workflow and user interface
 
-## Usage
+## Installation and Usage
 
-1. Clone the repository or download the source code.
-2. Install the required Python packages by running `pip install -r requirements.txt`.
-3. Obtain API keys for VirusTotal, URLScan.io, and Twitter, and create configuration files in the `configs` directory with the respective API keys.
-4. Run the `controller.py` script.
-5. Follow the prompts to enter a URL for scanning, tweet the results, or scan another URL.
+### Requirements
 
-## Configuration Files
+- Python 3.x
+- API keys for VirusTotal, URLScan.io, and Twitter
+- Required Python packages (listed in requirements.txt)
 
-The tool requires API keys for VirusTotal, URLScan.io, and Twitter. These keys should be stored in separate JSON files in the `configs` directory with the following structure:
+### Setup Instructions
 
-- `virustotal_config.json`:
-  ```json
-  {
-    "api_key": "your_virustotal_api_key"
-  }
-  ```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/cybersight/url-threat-analyzer.git
+   cd url-threat-analyzer
+   ```
 
-- `urlscan_config.json`:
-  ```json
-  {
-    "api_key": "your_urlscan_api_key"
-  }
-  ```
+2. **Install Python dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-- `twitter_config.json`:
-  ```json
-  {
-    "consumer_key": "your_twitter_consumer_key",
-    "consumer_secret": "your_twitter_consumer_secret",
-    "access_token": "your_twitter_access_token",
-    "access_token_secret": "your_twitter_access_token_secret"
-  }
-  ```
+3. **Configure API keys:**
+   - Create configuration files in the `configs` directory for:
+     - VirusTotal (`virustotal_config.json`)
+     - URLScan.io (`urlscan_config.json`)
+     - Twitter (`twitter_config.json`)
 
-## Output Files
+4. **Run the application:**
+   ```bash
+   python controller.py
+   ```
 
-The analysis results are saved as numbered text files in the `outputs` directory. Each file contains the following information:
+5. **Follow the on-screen prompts** to analyze URLs and share results
 
-- Scanned URL
-- Domain
-- Registrar
-- Creation and expiration dates
-- Threat types
-- IP addresses and countries associated with the URL
-- Scan date
-- Screenshot URL
-- VirusTotal and URLScan.io report URLs
+## Configuration
 
-## Dependencies
-
-This project requires the following Python libraries:
-
-- `requests`
-- `tweepy`
-- `python-whois`
-
-Install these dependencies by running `pip install -r requirements.txt` before running the application.
-
-## Contributing
-
-Contributions to this project are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request. Follow the standard GitHub workflow for contributions.
+Customize the tool's behavior through:
+- **API Configuration:** Modify JSON files in the `configs` directory
+- **Output Formatting:** Adjust report templates in `output_module.py`
+- **Twitter Integration:** Modify tweet formatting in `twitter_module.py`
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the GNU General Public License (GPL). This means you are free to:
+- Use the software for any purpose
+- Study how the software works and modify it
+- Distribute copies
+- Distribute modified versions
+
+The full license text is included in the repository.
+
+## About Cybersight Security
+
+Cybersight Security is a leading provider of cybersecurity solutions, helping organizations protect their digital assets against evolving threats. Our URL Threat Analyzer is part of our commitment to security awareness and education.
+
+**Disclaimer:** This tool is for informational purposes only. The threat analysis results are dependent on third-party services and should be verified through additional means. Cybersight Security makes no warranties about the completeness or accuracy of the data presented.
